@@ -17,15 +17,21 @@ public class Recursion {
 		l1.add(new Comp("First1", l2));
 		l1.add(new Comp("First2"));
 		Comp c1 = new Comp("First", l1);
-		rec(c1);
+		rec(c1, 0);
 		
 
 	}
-	public static void rec(Comp c){
-		System.out.println(c.getName());
+	public static void rec(Comp c, int level){
+		String s = "";
+		for (int i=0; i<level; i++){
+			s+="  ";
+		}
+		System.out.println(s + c.getName() + " " + level);
 		if (c.getChildren() != null && c.getChildren().size() > 0){
+			level++;
 			for (Comp i : c.getChildren()) {
-				rec(i);
+				
+				rec(i, level);
 			}
 		}
 	}
